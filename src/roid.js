@@ -189,7 +189,7 @@ function build(graph) {
 // 这是一个 loader 的最简单实现
 function loader(filename, code) {
   if (/index/.test(filename)) {
-    console.log('这里是 loader ')
+    console.log('this is loader ')
   }
   return code
 }
