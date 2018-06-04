@@ -2,6 +2,8 @@
 
 roid 是一个极其简单的打包软件，使用 node.js 开发而成
 
+如果不想看教程，直接看代码的（全部注释）：[点击地址](https://github.com/Foveluy/roid/blob/master/src/roid.js)
+
 ## 为什么要写 roid ?
 
 我们每天都面对前端的这几款编译工具，但是在大量交谈中我得知，并不是很多人知道这些打包软件背后的工作原理，因此有了这个 project 出现。诚然，你并不需要了解太多编译原理之类的事情，如果你在此之前对 node.js 极为熟悉，那么你对前端打包工具一定能非常好的理解。
@@ -200,8 +202,26 @@ module.exports = entry => {
 
 测试的代码，我已经放在了仓库里，想测试一下的同学可以去仓库中自行提取。
 
+打满注释的代码也放在仓库了，[点击地址](https://github.com/Foveluy/roid/blob/master/src/roid.js)
+
 ```bash
 git clone https://github.com/Foveluy/roid.git
 npm i
 node ./src/_test.js ./example/index.js
 ```
+
+输出
+
+```bash
+this is loader
+
+hello zheng Fang!
+welcome to roid, I'm zheng Fang
+
+if you love roid and learnt any thing, please give me a star
+https://github.com/Foveluy/roid
+```
+
+## 参考
+1. https://github.com/blackLearning/blackLearning.github.io/issues/23
+2. https://github.com/ronami/minipack
