@@ -71,7 +71,7 @@ function parseDependecies(filename) {
 // 接下来，我们对模块进行更高级的处理。
 // 我们之前已经写了一个 parseDependecies 函数，那么现在我们要来写一个 parseGraph 函数
 // 我们将所有文件模块组成的集合叫做 graph ，用于描述我们这个项目的所有的依赖关系
-// parseGraph 从 entry （入口） 出发，一直手机完所有的以来文件为止
+// parseGraph 从 entry （入口） 出发，一直收集完所有的依赖文件为止
 function parseGraph(entry) {
   // 从 entry 出发，首先收集 entry 文件的依赖
   const entryAsset = parseDependecies(path.resolve(currentPath, entry))
@@ -111,7 +111,7 @@ function parseGraph(entry) {
       // 获取唯一 id
       const id = denpendencyAsset.id
 
-      // 这里是重要的点了，我们解析每解析一个模块，我们就将他记录在这个文件模块 asset 下的 idMapping 中
+      // 这里是重要的点了，我们每解析一个模块，我们就将他记录在这个文件模块 asset 下的 idMapping 中
       // 之后我们 require 的时候，能够通过这个 id 值，找到这个模块对应的代码，并进行运行
       asset.idMapping[dependencyPath] = denpendencyAsset.id
 
@@ -134,7 +134,7 @@ function build(graph) {
   let modules = ''
 
   // 我们将 graph 中所有的 asset 取出来，然后使用 node.js 制造模块的方法来将一份代码包起来
-  // 我之前做过一个《庖丁解牛：教你如何实现》node.js 模块的文章，不懂的可以去看看
+  // 我之前做过一个《庖丁解牛：教你如何实现 node.js 模块》的文章，不懂的可以去看看
   // https://zhuanlan.zhihu.com/p/34974579
   //
   // 在这里简单讲述，我们将转换好的源码，放进一个 function(require,module,exports){} 函数中
@@ -164,7 +164,7 @@ function build(graph) {
   // 紧接着，在我们的 require 函数中，我们拿到外部传进来的 modules，利用我们一直在说的全局数字 id 获取我们的模块
   // 每个模块获取出来的就是一个二维元组
   // 然后，我们要制造一个 `子require`
-  // 这么做的原因是我们在文件中使用 require 时，我们一般 require 的是地址，而顶层的 require 函数参数时 id
+  // 这么做的原因是我们在文件中使用 require 时，我们一般 require 的是地址，而顶层的 require 函数参数是 id
   // 不要担心，我们之前的 idMapping 在这里就用上了，通过用户 require 进来的地址，在 idMapping 中找到 id
   // 然后递归调用 require(id)，就能够实现模块的自动倒入了
   // 接下来制造一个 const newModule = {exports: {}};
