@@ -1,6 +1,6 @@
 # roid
 
-roid 是一个极其简单的打包软件，使用 node.js 开发而成
+roid 是一个极其简单的打包软件，使用 node.js 开发而成，看完本文，你可以实现一个非常简单的，但是又有实际用途的前端代码打包工具。
 
 如果不想看教程，直接看代码的（全部注释）：[点击地址](https://github.com/Foveluy/roid/blob/master/src/roid.js)
 
